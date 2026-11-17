@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f7">
+  <meta name="description" content="채경석 — Urban Ecology, City and Metropolitan Planning, Urban Design. 관심 분야: Urban Morphology, Walkability.">
+  <title>채경석 | Urban Studies</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iNCIgZmlsbD0iI2Y3ZjdmNyIvPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNjM2MzYyIgc3Ryb2tlLXdpZHRoPSIzIj48Y2lyY2xlIGN4PSIzMiIgY3k9IjIyIiByPSIxMCIvPjxwYXRoIGQ9Ik0xMiA1NXYtNWEyMCAyMCAwIDAgMSA0MCAwdjUiLz48L2c+PGNpcmNsZSBjeD0iNTMiIGN5PSIxMiIgcj0iNSIgZmlsbD0iIzY2NjY2NiIvPjwvc3ZnPgo=" type="image/svg+xml">
+  <style>
+500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+:root{--bg:#f7f7f7;--ink:#262626;--muted:#6e6e6e;--faint:#969696;--line:#dadada;--soft:#eeeeee;--accent:#545454;--header:rgba(247,247,247,.91);--mono:'IBM Plex Mono',monospace;--sans:'Noto Sans KR',Arial,sans-serif;color-scheme:light}
+:root[data-theme=dark]{--bg:#151515;--ink:#ededed;--muted:#aaaaaa;--faint:#888888;--line:#3a3a3a;--soft:#1e1e1e;--accent:#bcbcbc;--header:rgba(21,21,21,.92);color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:124px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;-webkit-font-smoothing:antialiased}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:6px}::selection{background:var(--accent);color:var(--bg)}.skip{position:fixed;left:12px;top:-70px;z-index:99;padding:12px;background:var(--ink);color:var(--bg)}.skip:focus{top:10px}.header{position:fixed;inset:0 0 auto;z-index:20;display:flex;justify-content:space-between;gap:26px;align-items:flex-start;padding:24px 4%;background:var(--header);backdrop-filter:blur(12px);border-bottom:1px solid transparent}.brand{display:flex;align-items:center;gap:14px;flex:none}.brand-mark{display:grid;grid-template-columns:repeat(2,19px);grid-template-rows:repeat(2,19px);border:1px solid var(--muted);font:12px var(--mono);color:var(--muted)}.brand-mark i{font-style:normal;display:grid;place-items:center}.brand-mark i:nth-child(odd){border-right:1px solid var(--muted)}.brand-mark i:nth-child(-n+2){border-bottom:1px solid var(--muted)}.brand-name{font-size:15px;line-height:1.4;letter-spacing:.1em}.brand-name>span{display:block;font:11px/1.5 var(--mono);letter-spacing:.07em;color:var(--muted);margin-top:2px}.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:17px;padding-top:4px}nav{display:flex;gap:29px}nav a{font:12px var(--mono);letter-spacing:.09em;color:var(--muted);position:relative;padding-bottom:5px}nav a.active,nav a:hover{color:var(--ink)}nav a:after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--ink);transition:width .2s}nav a.active:after,nav a:hover:after{width:100%}.theme-switch{display:flex;gap:12px;align-items:center;font:10px var(--mono);letter-spacing:.08em;color:var(--faint)}.theme-switch button{font:inherit;letter-spacing:inherit;background:none;border:0;padding:3px 0;color:var(--faint)}.theme-switch button[aria-pressed=true]{color:var(--ink)}.menu-toggle{display:none}.hero{height: min(920px,100svh);min-height:740px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}.city{position:absolute;inset:0 0 50px;pointer-events:none;mask-image:linear-gradient(to bottom,transparent 6%,#000 18%,#000 65%,transparent 99%)}#city{width:100%;height:100%;display:block}.drawing-label{position:absolute;top:24%;left:4%;display:flex;align-items:center;gap:9px;font:9px var(--mono);letter-spacing:.09em;color:var(--faint)}.live-dot{display:inline-block;height:5px;width:5px;border-radius:50%;background:var(--accent);flex:none}.hero-content{position:absolute;bottom:88px;left:4%;right:4%}.eyebrow{font:11px var(--mono);letter-spacing:.12em;color:var(--muted);display:flex;gap:20px;align-items:center}.eyebrow>span{font:12px var(--sans);letter-spacing:0}.name-row{display:flex;align-items:center;gap:26px;margin:21px 0 37px}.person{width:74px;height:74px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:var(--bg)}.person svg{width:48px;height:48px;stroke:var(--muted);stroke-width:1.4;stroke-linecap:round}.name-row h1{font-weight:500;font-size:clamp(66px,7.4vw,108px);line-height:1.2;letter-spacing:-.055em;margin:0}.name-dot{color:var(--accent);margin-left:5px}.hero-bottom{display:flex;justify-content:space-between;align-items:center}.hero-interests{display:flex;gap:22px;font:14px var(--mono);color:var(--muted)}.hero-interests>span+span:before{content:'/';margin-right:22px;color:var(--faint)}.explore{font:10px var(--mono);letter-spacing:.1em;display:flex;align-items:center;gap:28px}.explore>span{font-size:24px}.hero-corner{position:absolute;bottom:23px;right:4%;font:9px var(--mono);letter-spacing:.08em;color:var(--faint)}.section{margin:0 4%;padding:89px 0;border-bottom:1px solid var(--line)}.section-heading{display:grid;grid-template-columns:23% 1fr;align-items:start;margin-bottom:48px}.section-index{font:10px/1.7 var(--mono);letter-spacing:.08em;color:var(--muted)}.section-heading>.section-index{padding-top:12px}h2{font-size:38px;line-height:1.2;font-weight:400;letter-spacing:-.04em;margin:0}h2>span{display:inline-block;font-size:13px;letter-spacing:0;color:var(--muted);margin-left:19px}.about-body,.research-body{margin-left:23%}.subheading{display:flex;gap:14px;align-items:baseline;margin-bottom:18px}.subheading h3{font-size:14px;font-weight:500;margin:0}.subheading>span{font-size:11px;color:var(--muted)}.education{padding:0;margin:0;list-style:none;border-top:1px solid var(--line)}.education li{padding:26px 0;display:grid;grid-template-columns:24% 1fr 24px;align-items:baseline;border-bottom:1px solid var(--line);gap:15px}.degree{font:10px var(--mono);letter-spacing:.03em;color:var(--muted)}.degree>span{display:block;font:11px var(--sans);margin-top:8px}.education h4{font-size:23px;font-weight:400;line-height:1.5;margin:0;letter-spacing:-.025em}.degree-number{font:10px var(--mono);color:var(--faint);text-align:right}.interests{margin-top:45px}.interest-list{display:flex;gap:36px;flex-wrap:wrap}.interest-list>span{font-size:19px;padding-left:17px;position:relative}.interest-list>span:before{content:'+';position:absolute;left:0;top:3px;font:15px var(--mono);color:var(--accent)}.ko{display:block;font-size:11px;color:var(--muted);margin-top:8px}.research-art{background:var(--soft);padding:12px 20px 0;border:1px solid var(--line)}.research-art>svg{width:100%;display:block}.diagram-grid{stroke:var(--line);stroke-width:.6}.diagram-building{fill:var(--bg);stroke:var(--faint);stroke-width:1}.diagram-hatch{stroke:var(--line);stroke-width:1.3}.diagram-street{stroke:var(--faint);stroke-width:1;stroke-dasharray:6 9;opacity:.6}.diagram-route-glow{stroke:var(--accent);stroke-width:24;opacity:.09}.diagram-route{stroke:var(--accent);stroke-width:2;stroke-dasharray:6 5;animation:route 30s linear infinite}.diagram-node{fill:var(--soft);stroke:var(--accent);stroke-width:2}.diagram-tree{fill:var(--muted);opacity:.65}.diagram-text{fill:var(--muted);font:10px var(--mono)}.diagram-note{stroke:var(--accent);stroke-width:.8}.diagram-note text{stroke:none;fill:var(--accent);font:10px var(--mono)}.art-caption{display:flex;justify-content:space-between;padding:17px 0;border-top:1px solid var(--line);font:9px var(--mono);letter-spacing:.05em;color:var(--muted)}.art-caption>span+span{font:10px var(--sans)}.research-detail{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;padding-top:29px}.status{font:9px var(--mono);letter-spacing:.07em;display:flex;align-items:center;gap:8px;color:var(--muted)}.research-detail h3{font-size:29px;font-weight:400;margin:14px 0 8px;letter-spacing:-.04em}.research-detail p{font-size:13px;color:var(--muted);margin:0}.text-link{display:flex;gap:27px;align-items:center;font-size:12px;padding-bottom:7px;border-bottom:1px solid var(--line)}.text-link>span{font-size:18px}.project-row{margin-left:23%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:48px 1fr auto;gap:15px;align-items:center;padding:32px 0}.project-number{font:10px var(--mono);color:var(--faint);align-self:start;padding-top:2px}.project-category{font:9px var(--mono);color:var(--muted);letter-spacing:.06em}.project-row h3{font-size:25px;font-weight:400;margin:12px 0 0;letter-spacing:-.04em}.project-location{font:9px var(--mono);color:var(--muted);letter-spacing:.05em}.project-location>span{display:inline-block;margin-left:18px;font-size:24px;color:var(--faint)}.contact{padding:77px 4% 84px;background:var(--soft);margin-top:0}.contact-top{display:flex;align-items:baseline;gap:0}.contact-top>.section-index{width:23%;flex:none}.contact-top h2{font-size:34px}.contact-bottom{margin:32px 0 0 23%;display:flex;align-items:center;gap:25px;position:relative}.email{font-size:clamp(19px,3vw,38px);letter-spacing:-.04em;display:flex;align-items:center;gap:28px}.email>span{font-size:32px;color:var(--accent);transition:transform .2s}.email:hover>span{transform:translate(3px,-3px)}#copy-email{background:none;border:1px solid var(--line);border-radius:0;padding:11px 13px;font-size:10px;white-space:nowrap}#copy-email:hover{border-color:var(--muted)}#copy-email>span{margin-left:12px}#copy-status{position:absolute;left:0;top:calc(100% + 14px);font-size:11px;color:var(--muted)}footer{margin:0 4%;padding:25px 0 29px;display:flex;justify-content:space-between;gap:20px;align-items:center;font:9px var(--mono);color:var(--muted);letter-spacing:.03em}footer>span:first-child{font:10px var(--sans)}@keyframes route{to{stroke-dashoffset:-220}}
+@media(min-width:1600px){.header{padding-left:6%;padding-right:6%}.hero-content{left:6%;right:6%}.section{margin-left:6%;margin-right:6%}.drawing-label{left:6%}.contact{padding-left:6%;padding-right:6%}footer{margin-left:6%;margin-right:6%}}
+@media(max-width:900px){nav{gap:19px}nav a{font-size:10px}.header{padding:22px 5%}.brand{gap:10px}.brand-mark{grid-template-columns:repeat(2,16px);grid-template-rows:repeat(2,16px)}.brand-name{font-size:14px}.brand-name>span{font-size:9px}.hero-content{left:5%;right:5%}.hero{min-height:680px}.section{margin:0 5%;padding:65px 0}.section-heading{grid-template-columns:20% 1fr}.about-body,.research-body,.project-row{margin-left:20%}.education li{grid-template-columns:23% 1fr 20px}.education h4{font-size:20px}.degree{font-size:9px}.contact{padding:65px 5% 76px}.contact-top>.section-index{width:20%}.contact-bottom{margin-left:20%;gap:20px;flex-wrap:wrap}.email{font-size:28px}.interest-list{gap:28px}.interest-list>span{font-size:17px}footer{margin:0 5%}footer>span:nth-child(2){display:none}}
+@media(max-width:600px){html{scroll-padding-top:115px}.header{padding:19px 6%;min-height:99px}.header-right{padding-top:0;gap:16px}.menu-toggle{display:flex;align-items:center;gap:15px;background:none;border:0;padding:2px 0;font:10px var(--mono);letter-spacing:.1em}.menu-toggle>span{font-size:16px}.theme-switch{font-size:8px;gap:9px}nav{position:absolute;top:99px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:17px 6% 25px;display:none;flex-direction:column;gap:22px}nav.open{display:flex}nav a{font-size:12px;align-self:flex-start}.hero{height:90svh;min-height:630px;max-height:820px}.city{inset:42px -55% 85px}.drawing-label{left:6%;top:26%;font-size:8px}.hero-content{left:6%;right:6%;bottom:70px}.eyebrow{font-size:9px;gap:13px}.eyebrow>span{font-size:10px}.name-row{gap:16px;margin:25px 0 31px}.person{width:53px;height:53px}.person svg{width:36px;height:36px}.name-row h1{font-size:68px}.hero-interests{font-size:10px;gap:11px}.hero-interests>span+span:before{margin-right:11px}.explore{font-size:0;gap:0}.explore>span{font-size:23px}.hero-corner{right:6%;font-size:8px;bottom:22px}.section{margin:0 6%;padding:48px 0 54px}.section-heading{display:block;margin-bottom:30px}.section-heading>.section-index{display:block;padding:0;margin-bottom:17px}.section-index{font-size:9px}h2{font-size:31px}h2>span{font-size:11px;margin-left:15px}.about-body,.research-body,.project-row{margin-left:0}.subheading h3{font-size:13px}.subheading>span{font-size:10px}.education li{grid-template-columns:24% 1fr 13px;gap:11px;padding:23px 0}.degree{font-size:8px;letter-spacing:0}.degree>span{font-size:10px}.education h4{font-size:18px;line-height:1.6}.degree-number{font-size:8px}.desktop-break{display:none}.interests{margin-top:34px}.interest-list{gap:24px}.interest-list>span{font-size:15px}.ko{font-size:10px}.research-art{padding:4px 10px 0}.art-caption{font-size:7px;padding:12px 0}.art-caption>span+span{font-size:8px}.research-detail{padding-top:24px;gap:12px}.research-detail h3{font-size:25px}.research-detail p{font-size:11px}.text-link{font-size:10px;gap:9px}.status{font-size:8px}.project-row{grid-template-columns:25px 1fr;gap:10px;padding:25px 0}.project-category{font-size:8px}.project-row h3{font-size:22px}.project-location{display:none}.contact{padding:46px 6% 69px}.contact-top{display:block}.contact-top>.section-index{display:block;width:auto;margin-bottom:17px}.contact-top h2{font-size:31px}.contact-bottom{margin:27px 0 0;gap:19px}.email{font-size:25px;gap:12px}.email>span{font-size:26px}#copy-email{padding:9px 12px}footer{margin:0 6%;padding:23px 0;font-size:8px}footer>span:first-child{font-size:9px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.diagram-route{animation:none}*{transition:none!important}}
+
+/* Motion controls and pedestrian flows share one pause state. */
+#motion-toggle{position:absolute;left:4%;bottom:17px;display:flex;align-items:center;gap:8px;padding:6px 0;border:0;background:none;color:var(--muted);font-size:10px;line-height:1.6;z-index:2}
+#motion-toggle:hover{color:var(--ink)}.motion-symbol{font:13px var(--mono);width:14px;text-align:center}.motion-label{font-size:9px}
+.diagram-walker{fill:var(--accent);stroke:var(--bg);stroke-width:1.5;animation:diagram-walk 13s linear infinite}
+.diagram-walker.return{animation-direction:reverse;animation-delay:-6s}
+@keyframes diagram-walk{from{transform:translateX(0)}to{transform:translateX(640px)}}
+:root[data-motion=paused] .diagram-route,:root[data-motion=paused] .diagram-walker{animation-play-state:paused}
+@media(min-width:1600px){#motion-toggle{left:6%}}
+@media(max-width:900px){#motion-toggle{left:5%}}
+@media(max-width:600px){#motion-toggle{left:6%;bottom:16px}.motion-label{font-size:8px}.hero-corner{font-size:6px;letter-spacing:0}}
+@media(prefers-reduced-motion:reduce){.diagram-walker{animation:none}}
+
+/* Manhattan streetscape: keep silhouettes visible above the profile. */
+.city{mask-image:linear-gradient(to bottom,transparent 8%,#000 20%,#000 68%,transparent 98%)}
+.drawing-label{top:20%}
+@media(max-width:600px){.city{inset:52px -12% 85px}.drawing-label{top:22%;font-size:7px}}
+
+.view-controls{position:absolute;top:145px;right:4%;z-index:3;width:206px;padding:13px 14px 10px;background:var(--header);border:1px solid var(--line);backdrop-filter:blur(8px)}
+.view-heading{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--muted)}
+#zoom-value{font:10px var(--mono);color:var(--ink)}
+#view-distance{display:block;width:100%;height:20px;margin:10px 0 7px;accent-color:var(--ink);cursor:ew-resize}
+.view-actions{display:flex;justify-content:space-between;gap:7px;align-items:center}
+.view-actions button{padding:4px 0;min-height:28px;border:0;background:none;font-size:13px;white-space:nowrap}
+.view-actions button span{font-size:9px;color:var(--muted)}
+.view-actions button:disabled{opacity:.3;cursor:default}
+@media(min-width:1600px){.view-controls{right:6%}}
+@media(max-width:900px){.view-controls{right:5%}}
+@media(max-width:600px){.view-controls{top:158px;right:6%;width:175px;padding:10px 12px 8px}.view-heading{font-size:9px}.view-actions button span{font-size:8px}.drawing-label{top:123px}}
+.direction-heading{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+#view-direction{display:block;width:100%;height:20px;margin:8px 0 5px;accent-color:var(--ink);cursor:ew-resize}
+#direction-value{font-size:9px;color:var(--ink)}
+@media(max-width:600px){.view-controls{top:150px}.direction-heading{margin-top:8px;padding-top:8px}}
+
+</style>
+</head>
+<body>
+  <a class="skip" href="#about">본문으로 바로가기</a>
+  <header class="header">
+    <a class="brand" href="#home" aria-label="채경석 홈">
+      <span class="brand-mark" aria-hidden="true"><i>K</i><i>S</i><i>C</i><i>↗</i></span>
+      <span class="brand-name">채경석<span>URBAN STUDIES</span></span>
+    </a>
+    <div class="header-right">
+      <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">MENU <span aria-hidden="true">＋</span></button>
+      <nav id="navigation" aria-label="주요 메뉴">
+        <a href="#home" class="active" aria-current="location">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#research">RESEARCH</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+      <div class="theme-switch" role="group" aria-label="화면 테마">
+        <button data-theme-choice="light" aria-pressed="true">LIGHT</button><span aria-hidden="true">/</span><button data-theme-choice="dark" aria-pressed="false">DARK</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero" aria-labelledby="name">
+      <div class="city" role="img" aria-label="브로드웨이와 타임스퀘어 보행광장을 모티브로 한 무채색 선화. 간판이 있는 건물 사이의 넓은 광장에 의자, 테이블, 계단형 좌석과 옷과 가방, 팔과 다리 윤곽을 갖춘 실루엣 인물들이 걷거나 앉아 있습니다. 실제 지형을 정확히 재현한 지도는 아닙니다."><canvas id="city" aria-hidden="true"></canvas></div>
+      <div class="drawing-label"><span class="live-dot"></span> NEW YORK / BROADWAY · TIMES SQUARE</div>
+      <div class="view-controls" role="group" aria-label="도시 배경 확대 및 축소">
+        <div class="view-heading"><label for="view-distance">시점 거리</label><output id="zoom-value" for="view-distance">1.00×</output></div>
+        <input id="view-distance" type="range" min="65" max="240" step="5" value="100" aria-label="도시 배경 확대 배율" aria-valuetext="1.00배">
+        <div class="view-actions"><button id="zoom-out" type="button" aria-label="멀어지기">− <span>멀리</span></button><button id="zoom-reset" type="button" aria-label="원래 시점으로 돌아가기">↺ <span>원래대로</span></button><button id="zoom-in" type="button" aria-label="다가가기"><span>가까이</span> ＋</button></div>
+        <div class="view-heading direction-heading"><label for="view-direction">둘러보기</label><output id="direction-value" for="view-direction">정면</output></div>
+        <input id="view-direction" type="range" min="-80" max="80" step="5" value="0" aria-label="거리 좌우 방향" aria-valuetext="정면">
+        <div class="view-actions"><button id="look-left" type="button">← <span>왼쪽 거리</span></button><button id="look-front" type="button"><span>정면</span></button><button id="look-right" type="button"><span>오른쪽 거리</span> →</button></div>
+      </div>
+      <div class="hero-content">
+        <div class="eyebrow">PERSONAL PROFILE <span>도시 · 공간 · 보행</span></div>
+        <div class="name-row">
+          <span class="person" role="img" aria-label="사람 아이콘"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="23" r="10"/><path d="M13 54v-5c0-10 8.5-17 19-17s19 7 19 17v5"/></svg></span>
+          <h1 id="name">채경석<span class="name-dot">.</span></h1>
+        </div>
+        <!-- 소개 문장은 추후 이 위치에 추가할 수 있습니다. -->
+        <div class="hero-bottom"><div class="hero-interests"><span>Urban morphology</span><span>Walkability</span></div><a class="explore" href="#about">EXPLORE PROFILE <span aria-hidden="true">↓</span></a></div>
+      </div>
+      <button id="motion-toggle" type="button" aria-pressed="true"><span class="motion-symbol" aria-hidden="true">Ⅱ</span><span class="motion-label">애니메이션 일시정지</span></button>
+      <span class="hero-corner" aria-hidden="true">FIG. 01 — PEDESTRIAN PLAZA</span>
+    </section>
+
+    <section id="about" class="section about" aria-labelledby="about-title">
+      <div class="section-heading"><span class="section-index">01 / ABOUT</span><h2 id="about-title">Background<span>소개</span></h2></div>
+      <div class="about-body">
+        <div class="subheading"><h3>Education</h3><span>학력</span></div>
+        <ol class="education">
+          <li><span class="degree">BACHELOR'S <span>학사</span></span><h4>Urban Ecology</h4><span class="degree-number" aria-hidden="true">01</span></li>
+          <li><span class="degree">MASTER'S <span>석사</span></span><h4>City and Metropolitan<br class="desktop-break"> Planning</h4><span class="degree-number" aria-hidden="true">02</span></li>
+          <li><span class="degree">DOCTORAL <span>박사</span></span><h4>Urban Design</h4><span class="degree-number" aria-hidden="true">03</span></li>
+        </ol>
+        <div class="interests"><div class="subheading"><h3>Research interests</h3><span>관심 분야</span></div><div class="interest-list"><span>Urban morphology <span class="ko">도시형태</span></span><span>Walkability <span class="ko">보행환경</span></span></div></div>
+      </div>
+    </section>
+
+    <section id="research" class="section research" aria-labelledby="research-title">
+      <div class="section-heading"><span class="section-index">02 / RESEARCH</span><h2 id="research-title">Current research<span>현재 연구</span></h2></div>
+      <div class="research-body">
+        <div class="research-art" role="img" aria-label="건물 사이를 연결하는 공공보행통로의 개념도. 실제 연구 대상지를 나타내는 도면이 아닙니다.">
+          <svg viewBox="0 0 800 440" fill="none" aria-hidden="true">
+            <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" class="diagram-grid"/></pattern><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" class="diagram-hatch"/></pattern></defs>
+            <rect width="800" height="440" fill="url(#grid)"/>
+            <g class="diagram-building"><path d="M85 70h180v115H85zM85 255h180v115H85zM345 100h145v85H345zM345 255h145v95H345zM565 60h155v125H565zM565 255h155v125H565z"/></g>
+            <g fill="url(#hatch)"><path d="M85 70h180v115H85zM345 255h145v95H345zM565 60h155v125H565z"/></g>
+            <path class="diagram-street" d="M305 0v440M525 0v440M0 220h800"/>
+            <path class="diagram-route-glow" d="M30 220H305l110-1 110 1h240"/>
+            <path class="diagram-route" d="M30 220H305l110-1 110 1h240"/>
+            <g class="diagram-node"><circle cx="80" cy="220" r="6"/><circle cx="305" cy="220" r="6"/><circle cx="525" cy="220" r="6"/><circle cx="720" cy="220" r="6"/></g>
+            <circle class="diagram-walker" cx="80" cy="220" r="4"/>
+            <circle class="diagram-walker return" cx="80" cy="220" r="4"/>
+            <g class="diagram-tree"><circle cx="113" cy="203" r="4"/><circle cx="143" cy="203" r="4"/><circle cx="173" cy="203" r="4"/><circle cx="603" cy="237" r="4"/><circle cx="633" cy="237" r="4"/><circle cx="663" cy="237" r="4"/></g>
+            <g class="diagram-text"><text x="32" y="32">PEDESTRIAN NETWORK</text><text x="350" y="158">BLOCK</text><text x="351" y="287">BLOCK</text><text x="590" y="414">CONCEPT DIAGRAM / N.T.S.</text></g>
+            <g class="diagram-note"><path d="M418 215v-75h66"/><text x="428" y="127">PUBLIC WALKWAY</text></g>
+          </svg>
+          <div class="art-caption"><span>PUBLIC WALKWAY</span><span>공공보행통로 · 개념도</span></div>
+        </div>
+        <div class="research-detail"><div><span class="status"><span class="live-dot"></span> CURRENT RESEARCH</span><h3>공공보행통로</h3><p>Public Walkways</p></div><a class="text-link" href="mailto:kschae92@snu.ac.kr">연구 관련 문의 <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects" aria-labelledby="projects-title">
+      <div class="section-heading"><span class="section-index">03 / PROJECTS</span><h2 id="projects-title">Projects<span>활동</span></h2></div>
+      <div class="project-row"><span class="project-number">01</span><div><span class="project-category">PROJECT / MONGOLIA</span><h3>몽골 프로젝트</h3></div><span class="project-location">MONGOLIA <span aria-hidden="true">↗</span></span></div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title"><div class="contact-top"><span class="section-index">04 / CONTACT</span><h2 id="contact-title">Contact<span>연락처</span></h2></div><div class="contact-bottom"><a class="email" href="mailto:kschae92@snu.ac.kr">kschae92@snu.ac.kr <span aria-hidden="true">↗</span></a><button id="copy-email" type="button">이메일 복사 <span aria-hidden="true">⧉</span></button><span id="copy-status" role="status" aria-live="polite"></span></div></section>
+  </main>
+
+  <footer><span>© <span id="year">2026</span> 채경석</span><span>URBAN MORPHOLOGY & WALKABILITY</span><a href="#home">BACK TO TOP ↑</a></footer>
+<script>
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  const themeButtons = document.querySelectorAll('[data-theme-choice]');
+  function setTheme(theme) {
+    root.dataset.theme = theme;
+    themeButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme)));
+    document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#151515' : '#f7f7f7';
+    try { localStorage.setItem('kschae-theme', theme); } catch (_) {}
+    drawCity();
+  }
+  themeButtons.forEach(button => button.addEventListener('click', () => setTheme(button.dataset.themeChoice)));
+  const menu = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+  function closeMenu() { nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); menu.querySelector('span').textContent = '＋'; }
+  menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)); menu.querySelector('span').textContent = open ? '−' : '＋'; });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') { closeMenu(); if (document.activeElement.closest('nav')) menu.focus(); } });
+  nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  const sections = [...document.querySelectorAll('main>section[id]')];
+  const links = [...nav.querySelectorAll('a')];
+  let scrollPending = false;
+  function updateNav() {
+    let current = sections[0].id;
+    sections.forEach(section => { if (section.getBoundingClientRect().top <= 170) current = section.id; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 5) current = 'contact';
+    links.forEach(link => { const active = link.hash === '#' + current; link.classList.toggle('active', active); if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
+    scrollPending = false;
+  }
+  window.addEventListener('scroll', () => { if (!scrollPending) { requestAnimationFrame(updateNav); scrollPending = true; } }, {passive:true});
+  document.getElementById('copy-email').addEventListener('click', async () => {
+    const status = document.getElementById('copy-status');
+    try { await navigator.clipboard.writeText('kschae92@snu.ac.kr'); status.textContent = '이메일 주소를 복사했습니다.'; }
+    catch (_) { status.textContent = '복사할 주소: kschae92@snu.ac.kr'; }
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Original perspective drawing; illustrative urban blocks, not geographic data.
+  const canvas = document.getElementById('city');
+  const ctx = canvas.getContext('2d');
+  let w = 0, h = 0;
+  const hero = document.getElementById('home');
+  const motionButton = document.getElementById('motion-toggle');
+  const distanceInput = document.getElementById('view-distance');
+  const zoomValue = document.getElementById('zoom-value');
+  const zoomIn = document.getElementById('zoom-in');
+  const zoomOut = document.getElementById('zoom-out');
+  const zoomReset = document.getElementById('zoom-reset');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let playing = !reducedMotion.matches;
+  let inView = true;
+  let frame = null;
+  let lastTime = null;
+  let elapsed = 0;
+  let pointer = {x:0, y:0};
+  let camera = {x:0, y:0, z:0};
+  let zoom = 1;
+  let targetZoom = 1;
+  let direction = 0;
+  let targetDirection = 0;
+  let buildingTransform = 0;
+  const directionInput = document.getElementById('view-direction');
+  const directionValue = document.getElementById('direction-value');
+  const lookLeft = document.getElementById('look-left');
+  const lookRight = document.getElementById('look-right');
+  const lookFront = document.getElementById('look-front');
+  const viewChanging = () => Math.abs(zoom - targetZoom) > .001 || Math.abs(direction - targetDirection) > .02;
+  function setDirection(value) {
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) return;
+    targetDirection = Math.max(-80, Math.min(80, Math.round(parsed / 5) * 5));
+    directionInput.value = String(targetDirection);
+    const label = targetDirection === 0 ? '정면' : (targetDirection < 0 ? '왼쪽 ' : '오른쪽 ') + Math.abs(targetDirection) + '°';
+    directionValue.textContent = label;
+    directionInput.setAttribute('aria-valuetext', label);
+    lookLeft.disabled = targetDirection === -80;
+    lookRight.disabled = targetDirection === 80;
+    lookFront.disabled = targetDirection === 0;
+    zoomReset.disabled = Math.abs(targetZoom - 1) < .001 && targetDirection === 0;
+    if (reducedMotion.matches) { direction = targetDirection; drawCity(); }
+    else startLoop();
+  }
+  directionInput.addEventListener('input', () => setDirection(directionInput.value));
+  lookLeft.addEventListener('click', () => setDirection(-80));
+  lookRight.addEventListener('click', () => setDirection(80));
+  lookFront.addEventListener('click', () => setDirection(0));
+  function setZoom(value) {
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) return;
+    targetZoom = Math.max(.65, Math.min(2.4, Math.round(parsed * 20) / 20));
+    distanceInput.value = String(Math.round(targetZoom * 100));
+    zoomValue.textContent = targetZoom.toFixed(2) + '×';
+    distanceInput.setAttribute('aria-valuetext', targetZoom.toFixed(2) + '배');
+    zoomIn.disabled = targetZoom >= 2.4;
+    zoomOut.disabled = targetZoom <= .65;
+    zoomReset.disabled = Math.abs(targetZoom - 1) < .001 && targetDirection === 0;
+    if (reducedMotion.matches) { zoom = targetZoom; drawCity(); }
+    else startLoop();
+  }
+  distanceInput.addEventListener('input', () => setZoom(Number(distanceInput.value) / 100));
+  zoomIn.addEventListener('click', () => setZoom(targetZoom + .2));
+  zoomOut.addEventListener('click', () => setZoom(targetZoom - .2));
+  zoomReset.addEventListener('click', () => { setZoom(1); setDirection(0); });
+  function syncMotionButton() {
+    motionButton.setAttribute('aria-pressed', String(playing));
+    motionButton.querySelector('.motion-label').textContent = playing ? '애니메이션 일시정지' : '애니메이션 재생';
+    motionButton.querySelector('.motion-symbol').textContent = playing ? 'Ⅱ' : '▷';
+    root.dataset.motion = playing ? 'playing' : 'paused';
+  }
+  function stopLoop() {
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null;
+    lastTime = null;
+  }
+  function startLoop() {
+    if ((playing || viewChanging()) && inView && !document.hidden && frame === null) frame = requestAnimationFrame(animate);
+  }
+  function animate(timestamp) {
+    frame = null;
+    if ((!playing && !viewChanging()) || !inView || document.hidden) { lastTime = null; return; }
+    if (lastTime === null) lastTime = timestamp;
+    const delta = timestamp - lastTime;
+    if (delta >= 1000 / 30) {
+      lastTime = timestamp;
+      if (playing) {
+        elapsed += Math.min(delta, 80) / 1000;
+        camera.x += (Math.sin(elapsed * .18) * 12 + pointer.x * 16 - camera.x) * .04;
+        camera.y += (Math.sin(elapsed * .23) * 3 + pointer.y * 5 - camera.y) * .04;
+        camera.z = Math.sin(elapsed * .15) * 24;
+      }
+      zoom += (targetZoom - zoom) * .15;
+      direction += (targetDirection - direction) * .12;
+      if (Math.abs(zoom - targetZoom) <= .001) zoom = targetZoom;
+      if (Math.abs(direction - targetDirection) <= .02) direction = targetDirection;
+      drawCity();
+    }
+    startLoop();
+  }
+  motionButton.addEventListener('click', () => {
+    playing = !playing;
+    syncMotionButton();
+    if (playing || viewChanging()) startLoop(); else stopLoop();
+  });
+  reducedMotion.addEventListener('change', event => {
+    playing = !event.matches;
+    syncMotionButton();
+    if (playing) startLoop(); else { stopLoop(); zoom = targetZoom; direction = targetDirection; camera = {x:0,y:0,z:0}; drawCity(); }
+  });
+  hero.addEventListener('pointermove', event => {
+    if (event.pointerType === 'touch' || !playing || event.target.closest('.view-controls')) return;
+    const rect = hero.getBoundingClientRect();
+    pointer = {x: Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1)), y: Math.max(-1, Math.min(1, (event.clientY - rect.top) / rect.height * 2 - 1))};
+  }, {passive:true});
+  hero.addEventListener('pointerleave', () => { pointer = {x:0,y:0}; });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopLoop(); else startLoop(); });
+  new IntersectionObserver(entries => {
+    inView = entries[0].isIntersecting;
+    if (inView) startLoop(); else stopLoop();
+  }).observe(hero);
+  // An imagined Manhattan street: original linework, not a geographic survey.
+  let seed = 92;
+  function random() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+  const blocks = [];
+  for (const side of [-1, 1]) {
+    for (let index=0; index<15; index++) {
+      const z=110+index*140+(index===3?45:0);
+      const height=255+random()*150;
+      blocks.push({side, x:side*(132+random()*12), z, width:82+random()*60, depth:index===2?75:108+random()*18, height, setback:index%3===0, water:index%4===1, escape:index%3===1});
+      if(index%3===0) blocks.push({side,x:side*310,z:z+20,width:120,depth:120,height:190+random()*90,setback:true});
+    }
+  }
+  for (const cross of [-1,1]) for (const side of [-1,1]) for(let i=0;i<11;i++) {
+    blocks.push({cross,side,x:side*80,z:215+i*145,width:80+random()*45,depth:115,height:105+random()*120,setback:i%3===0,water:i%4===1,escape:i%4===2});
+  }
+  const people=Array.from({length:54},(_,i)=>({x:(i%2?-1:1)*(92+random()*24),z:65+random()*1535,speed:10+random()*15,direction:random()>.5?1:-1,phase:random()*Math.PI*2,crossing:i%7===0}));
+  for(let i=0;i<32;i++)people.push({plaza:true,x:(random()-.5)*165,z:70+random()*900,speed:8+random()*12,direction:i%2?1:-1,phase:random()*Math.PI*2});
+  for(let i=0;i<30;i++)people.push({sideStreet:true,x:random()*3200-1600,z:520+(i%2?1:-1)*(66+random()*10),speed:12+random()*12,direction:i%2?1:-1,phase:random()*Math.PI*2});
+  function viewSpace(x,y,z) {
+    if (buildingTransform) { const localX=x; x=buildingTransform*z; z=520+localX; }
+    const angle=direction*Math.PI/180;
+    const dx=x-camera.x,dz=z+280+camera.z-Math.abs(direction)/80*800;
+    return [dx*Math.cos(angle)-dz*Math.sin(angle),y,dx*Math.sin(angle)+dz*Math.cos(angle)];
+  }
+  function screenPoint(p) { const scale=Math.min(w*.92,1000)*zoom/p[2];const lookUp=Math.max(0,zoom-1)*180;return [w*.5+p[0]*scale,h*.45+(57+lookUp-p[1]+camera.y)*scale]; }
+  function project(x,y,z) { const p=viewSpace(x,y,z);return p[2]>=30?screenPoint(p):null; }
+  function strokeLine(points,color,width=.6,closed=false,fill=null){
+    let vertices=points.map(p=>viewSpace(...p));
+    const intersect=(a,b)=>{const t=(30-a[2])/(b[2]-a[2]);return[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,30];};
+    ctx.beginPath();
+    if(closed){
+      const clipped=[];
+      vertices.forEach((b,i)=>{const a=vertices[(i+vertices.length-1)%vertices.length];if(b[2]>=30){if(a[2]<30)clipped.push(intersect(a,b));clipped.push(b);}else if(a[2]>=30)clipped.push(intersect(a,b));});
+      if(clipped.length<3)return;
+      clipped.forEach((p,i)=>{const s=screenPoint(p);i?ctx.lineTo(...s):ctx.moveTo(...s);});ctx.closePath();
+    }else{
+      for(let i=1;i<vertices.length;i++){
+        let a=vertices[i-1],b=vertices[i];if(a[2]<30&&b[2]<30)continue;
+        if(a[2]<30)a=intersect(a,b);else if(b[2]<30)b=intersect(a,b);
+        ctx.moveTo(...screenPoint(a));ctx.lineTo(...screenPoint(b));
+      }
+    }
+    if(fill){ctx.fillStyle=fill;ctx.fill();}ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();
+  }
+  // Original articulated silhouettes: clothing, hair, shoes and accessories.
+  // Each shape stays vector-based so it remains crisp when the scene is zoomed.
+  function drawSilhouette(x,z,{variant=0,phase=0,walking=true,seated=false,height=12}={}){
+    const depth=viewSpace(x,0,z)[2];
+    if(depth<50)return;
+    const foot=project(x,0,z);
+    if(!foot)return;
+    const unit=Math.min(w*.92,1000)*zoom/depth*height/100;
+    if(unit*100<2)return;
+    const dark=root.dataset.theme==='dark';
+    const alpha=Math.max(.48,Math.min(.9,.92-depth/4200));
+    const pigment=dark?`rgba(226,226,226,${alpha})`:`rgba(28,28,28,${alpha})`;
+    const stride=walking?Math.sin(elapsed*4.6+phase):.1;
+    const bob=walking?Math.abs(stride)*.8:0;
+    const mirror=variant%2===0?1:-1;
+    const point=([px,py])=>[foot[0]+px*unit*mirror,foot[1]-(py+bob)*unit];
+    function shape(points){
+      ctx.beginPath();points.forEach((p,i)=>{const q=point(p);i?ctx.lineTo(...q):ctx.moveTo(...q);});ctx.closePath();ctx.fillStyle=pigment;ctx.fill();
+    }
+    function round(p,r){const q=point(p);ctx.beginPath();ctx.arc(q[0],q[1],Math.max(.15,r*unit),0,Math.PI*2);ctx.fillStyle=pigment;ctx.fill();}
+    function limb(a,b,wa,wb){
+      const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy)||1,nx=-dy/length,ny=dx/length;
+      shape([[a[0]+nx*wa,a[1]+ny*wa],[b[0]+nx*wb,b[1]+ny*wb],[b[0]-nx*wb,b[1]-ny*wb],[a[0]-nx*wa,a[1]-ny*wa]]);
+    }
+    const style=variant%6;
+    if(seated){
+      // Side profile, jacket, bent knees, shoes and forearms resting by a table.
+      limb([-4,33],[20,30],5.8,4.6);limb([20,30],[21,4],4.6,2.8);round([20,30],4.6);
+      limb([2,32],[14,25],4.8,3.9);limb([14,25],[15,3],3.9,2.5);
+      shape([[12,5],[20,5],[25,1],[25,0],[12,0]]);shape([[18,5],[26,5],[31,1],[31,0],[18,0]]);
+      shape([[-10,32],[-10,54],[-6,65],[1,69],[10,65],[13,55],[10,34],[3,29],[-5,29]]);
+      limb([9,61],[17,48],4.2,3);limb([17,48],[31,48],3,2);round([31,48],2);
+      shape([[-1,65],[-1,74],[5,74],[7,67]]);
+      round([2,80],5.8);shape([[-3,86],[3,87],[7,84],[8,79],[10,77],[7,76],[6,72],[1,71],[-3,75],[-4,81]]);
+      return;
+    }
+    // The far arm sits behind the coat and the legs have tapered trouser contours.
+    const farElbow=[-13+stride*4,60],farHand=[-13-stride*5,47];
+    limb([-10,76],farElbow,4.3,3.2);limb(farElbow,farHand,3.2,2.1);round(farHand,2.2);
+    const leftKnee=[-4+stride*7,24],leftAnkle=[-5+stride*13,4];
+    const rightKnee=[5-stride*6,23],rightAnkle=[5-stride*12,4];
+    limb([-5,46],leftKnee,5.3,3.9);round(leftKnee,3.9);limb(leftKnee,leftAnkle,3.9,2.5);
+    limb([5,46],rightKnee,5.1,3.7);round(rightKnee,3.7);limb(rightKnee,rightAnkle,3.7,2.4);
+    for(const a of [leftAnkle,rightAnkle])shape([[a[0]-3,a[1]+2],[a[0]+3,a[1]+2],[a[0]+7,1],[a[0]+7,0],[a[0]-3,0]]);
+    // Long coat, skirt and short jacket profiles vary across the crowd.
+    if(style===3){shape([[-5,84],[5,84],[11,78],[10,64],[8,60],[14,39],[-13,39],[-8,60],[-10,75]]);}
+    else if(style===0||style===4){shape([[-5,84],[5,84],[12,78],[11,62],[12,47],[2,45],[-1,49],[-3,45],[-13,47],[-11,63],[-12,77]]);}
+    else{shape([[-5,84],[5,84],[12,78],[11,64],[10,54],[12,48],[-1,46],[-12,49],[-10,64],[-12,77]]);}
+    if(style===4){
+      // Raised hand and phone beside the head.
+      limb([10,75],[20,65],4.2,3);round([20,65],3);limb([20,65],[9,89],3,2.2);round([9,89],2.5);
+      shape([[6,86],[10,86],[10,94],[7,94]]);
+    }else if(style===2&&!walking){
+      limb([11,75],[21,61],4.2,3);limb([21,61],[10,54],3,2.3);round([10,54],2.3);
+    }else{
+      const elbow=[14-stride*4,60],hand=[12+stride*5,47];
+      limb([10,76],elbow,4.4,3.1);round(elbow,3.1);limb(elbow,hand,3.1,2.1);round(hand,2.2);
+    }
+    if(style===1){
+      // A handbag with a narrow handle rather than a line attached to a stick arm.
+      const bx=farHand[0],by=farHand[1];
+      shape([[bx-5,by-7],[bx-6,by-19],[bx-3,by-22],[bx+4,by-21],[bx+6,by-8],[bx+3,by-6]]);
+      limb([bx-3,by-9],[bx-2,by],.8,.8);limb([bx+3,by-8],[bx+2,by],.8,.8);
+    }
+    if(style===5)shape([[-11,77],[-16,74],[-18,59],[-15,55],[-10,56],[-8,72]]);
+    shape([[-3,80],[-3,88],[3,88],[4,80]]);
+    round([0,94],5.9);
+    shape([[-4,99],[1,100],[5,97],[6,92],[8,91],[6,89],[4,86],[0,85],[-4,88],[-6,94]]);
+    if(style===3)shape([[-5,98],[-8,94],[-8,84],[-3,82],[-3,89]]);
+  }
+  function drawCity(){
+    if(!w||!h)return;
+    const dark=root.dataset.theme==='dark';
+    const paper=dark?'#151515':'#f7f7f7';
+    const rgb=dark?'224,224,224':'42,42,42';
+    const ink=a=>`rgba(${rgb},${a})`;
+    ctx.clearRect(0,0,w,h);ctx.lineCap='round';ctx.lineJoin='round';
+    buildingTransform=0;
+    // Sidewalks, avenue and crosswalk: no surface shading or coloured routes.
+    for(const x of [-128,-84,84,128])strokeLine([[x,0,20],[x,0,2400]],ink(.22),.7);
+    for(let z=80;z<2300;z+=65){
+      strokeLine([[-128,0,z],[-84,0,z]],ink(.12),.5);strokeLine([[84,0,z],[128,0,z]],ink(.12),.5);
+      strokeLine([[-84,0,z],[84,0,z]],ink(.09),.45);
+    }
+    strokeLine([[-90,0,30],[80,0,1400]],ink(.18),.7);
+    // A perpendicular street extends in both directions at the intersection.
+    for(const z of [440,465,575,600])for(const side of [-1,1])strokeLine([[side*128,0,z],[side*2000,0,z]],ink(.23),.7);
+    for(let x=-1950;x<2000;x+=65){if(Math.abs(x)<135)continue;strokeLine([[x,0,440],[x,0,465]],ink(.13),.5);strokeLine([[x,0,575],[x,0,600]],ink(.13),.5);}
+    // Buildings frame a plaza rather than a vehicle-dominated avenue.
+    function box(x,z,width,depth,bottom,top,alpha){
+      const x2=x+width,z2=z+depth;
+      const front=[[x,bottom,z],[x,top,z],[x2,top,z],[x2,bottom,z]];
+      const side=[[x2,bottom,z],[x2,top,z],[x2,top,z2],[x2,bottom,z2]];
+      const roof=[[x,top,z],[x,top,z2],[x2,top,z2],[x2,top,z]];
+      strokeLine(side,ink(alpha),.65,true,paper);strokeLine(front,ink(alpha),.75,true,paper);strokeLine(roof,ink(alpha),.55,true,paper);
+    }
+    const sortedBlocks=blocks.map(b=>{buildingTransform=b.cross||0;return{b,depth:viewSpace(b.x,0,b.z+b.depth*.5)[2]};}).sort((a,b)=>b.depth-a.depth);
+    for(const {b,depth} of sortedBlocks){
+      if(depth < -180)continue;
+      buildingTransform=b.cross||0;
+      const alpha=.16+.25*(1-Math.min(Math.abs(depth),2400)/2400);
+      const outer=b.x+b.side*b.width;
+      const left=Math.min(b.x,outer),right=Math.max(b.x,outer);
+      const baseHeight=b.setback?b.height*.7:b.height;
+      const front=[[left,0,b.z],[left,baseHeight,b.z],[right,baseHeight,b.z],[right,0,b.z]];
+      const face=[[b.x,0,b.z],[b.x,baseHeight,b.z],[b.x,baseHeight,b.z+b.depth],[b.x,0,b.z+b.depth]];
+      const roof=[[left,baseHeight,b.z],[right,baseHeight,b.z],[right,baseHeight,b.z+b.depth],[left,baseHeight,b.z+b.depth]];
+      strokeLine(face,ink(alpha),.65,true,paper);strokeLine(front,ink(alpha),.8,true,paper);strokeLine(roof,ink(alpha*.8),.55,true,paper);
+      // Repeated window bays and cornices, drawn as architectural strokes.
+      for(let y=20;y<baseHeight-8;y+=18){
+        for(let x=left+9;x<right-8;x+=17)strokeLine([[x,y,b.z],[x,y+8,b.z],[x+6,y+8,b.z],[x+6,y,b.z]],ink(alpha*.55),.45);
+        for(let z=b.z+12;z<b.z+b.depth-10;z+=23)strokeLine([[b.x,y,z],[b.x,y+8,z],[b.x,y+8,z+7],[b.x,y,z+7]],ink(alpha*.42),.4);
+      }
+      for(const y of [13,baseHeight-6])strokeLine([[left,y,b.z],[right,y,b.z]],ink(alpha*.8),.6);
+      if(b.setback){
+        const inset=12;box(left+inset,b.z+12,b.width-inset*2,b.depth-24,baseHeight,b.height,alpha);
+        for(let x=left+inset+10;x<right-inset-3;x+=15)strokeLine([[x,baseHeight+8,b.z+12],[x,b.height-6,b.z+12]],ink(alpha*.45),.4);
+        box(left+inset+10,b.z+22,b.width-inset*2-20,b.depth-44,b.height,b.height+18,alpha*.85);
+      }
+      if(b.escape){
+        const sx=b.x-b.side*2,z1=b.z+30,z2=b.z+59;
+        for(let y=30;y<baseHeight-18;y+=30){
+          strokeLine([[sx,y,z1],[sx,y,z2],[sx,y+6,z2],[sx,y+6,z1]],ink(alpha*.85),.65);
+          strokeLine([[sx,y,z1],[sx,y+30,z2]],ink(alpha*.8),.65);
+        }
+      }
+      if(b.water){
+        const x=(left+right)/2,z=b.z+b.depth*.55,y=baseHeight+14,r=12;
+        for(const sign of [-1,1])strokeLine([[x+sign*9,baseHeight,z],[x+sign*9,y+5,z]],ink(alpha),.7);
+        strokeLine([[x-r,y,z],[x-r,y+23,z],[x,y+31,z],[x+r,y+23,z],[x+r,y,z],[x-r,y,z]],ink(alpha),.7);
+        strokeLine([[x-r,y+23,z],[x+r,y+23,z]],ink(alpha),.5);
+      }
+      // Ground-floor storefronts and a thin projecting canopy.
+      for(let x=left+12;x<right-10;x+=27)strokeLine([[x,0,b.z],[x,14,b.z],[Math.min(x+18,right-5),14,b.z],[Math.min(x+18,right-5),0,b.z]],ink(alpha*.8),.6);
+    }
+    buildingTransform=0;
+    // Times Square-inspired pedestrian plaza, with the narrow billboard tower.
+    const towerZ=1200;
+    strokeLine([[-62,0,towerZ],[-45,360,towerZ],[42,360,towerZ],[62,0,towerZ]],ink(.42),1,true,paper);
+    strokeLine([[42,360,towerZ],[80,344,towerZ+90],[80,0,towerZ+90],[62,0,towerZ]],ink(.28),.7,true,paper);
+    function billboard(x,y,z,width,height,label){
+      strokeLine([[x,y,z],[x+width,y,z],[x+width,y+height,z],[x,y+height,z]],ink(.4),.85,true,paper);
+      strokeLine([[x+3,y+3,z],[x+width-3,y+3,z],[x+width-3,y+height-3,z],[x+3,y+height-3,z]],ink(.19),.45,true);
+      const position=project(x+width*.08,y+height*.52,z);
+      if(position){ctx.font=Math.max(6,Math.min(16,width*Math.min(w*.92,1000)*zoom/Math.max(30,viewSpace(x,y,z)[2])/Math.max(label.length*.7,1)))+'px monospace';ctx.fillStyle=ink(.7);ctx.fillText(label,...position);}
+    }
+    billboard(-43,265,towerZ-1,84,78,'TIMES');
+    billboard(-48,166,towerZ-1,94,87,'SQUARE');
+    billboard(-53,66,towerZ-1,104,88,'BROADWAY');
+    // Billboard frames on surrounding façades remain monochrome.
+    for(const side of [-1,1]){
+      const x=side<0?-300:146;
+      billboard(x,85,220,135,84,side<0?'NEW YORK':'BROADWAY');
+      billboard(x+10,183,220,115,60,'PEDESTRIAN');
+      billboard(x+8,251,220,120,46,'PLAZA');
+    }
+    // A shallow stepped seating area recalls the plaza's public steps.
+    for(let i=0;i<12;i++){
+      const z=710+i*11,y=i*1.6;
+      strokeLine([[-62,y,z],[62,y,z],[62,y+1.6,z],[62,y+1.6,z+11],[-62,y+1.6,z+11]],ink(.3),.65);
+    }
+    // Tables, movable chairs and planters make staying as visible as walking.
+    const seats=[[-64,130],[55,170],[-35,245],[70,320],[-64,410],[32,470],[-30,570],[65,640]];
+    for(const [x,z] of seats){
+      strokeLine(Array.from({length:17},(_,j)=>[x+Math.cos(j*Math.PI/8)*7,5,z+Math.sin(j*Math.PI/8)*7]),ink(.5),.7,true);
+      strokeLine([[x,0,z],[x,5,z]],ink(.4),.7);
+      for(const side of [-1,1]){
+        const cx=x+side*12;
+        strokeLine([[cx-3,0,z-3],[cx-3,3,z-3],[cx+3,3,z-3],[cx+3,0,z-3]],ink(.45),.65);
+        strokeLine([[cx-3,3,z-3],[cx-3,7,z-3],[cx+3,7,z-3],[cx+3,3,z-3],[cx+3,3,z+3],[cx-3,3,z+3],[cx-3,3,z-3]],ink(.4),.65);
+      }
+    }
+    // Filled seated silhouettes with jackets and bent knees.
+    seats.forEach(([x,z],i)=>drawSilhouette(x-12,z,{variant:i,seated:true,height:10.6}));
+    for(const x of [-110,110])for(const z of [150,350,570]){
+      box(x-6,z,12,12,0,7,.3);
+      for(let j=0;j<5;j++)strokeLine([[x,7,z+6],[x-5+j*2,17+Math.sin(j)*3,z+6]],ink(.36),.6);
+    }
+    const plazaLabel=project(-65,385,towerZ);
+    if(plazaLabel){ctx.font='10px monospace';ctx.fillStyle=ink(.7);ctx.fillText('TIMES SQUARE / BROADWAY',...plazaLabel);}
+    // Sidewalk lamps with curved arms and suspended street-name signs.
+    for(const side of [-1,1])for(const z of [250,620,1090]){
+      const x=side*87;
+      strokeLine([[x,0,z],[x,60,z],[x-side*3,65,z],[x-side*13,65,z],[x-side*17,61,z]],ink(.38),.9);
+      strokeLine([[x-side*20,60,z],[x-side*14,60,z]],ink(.4),1.3);
+    }
+    strokeLine([[-89,48,250],[-58,48,250],[-58,54,250],[-89,54,250]],ink(.4),.6,true,paper);
+    const sign=project(-87,49,250);if(sign){ctx.fillStyle=ink(.65);ctx.font='7px monospace';ctx.fillText('BROADWAY',...sign);}
+    // Paint far-to-near so nearby silhouettes read as complete figures.
+    const walkers=people.map((p,index)=>{
+      const walking=!(p.plaza&&index%5===0);
+      const time=walking?elapsed:0;
+      const cycle=((p.z-65+time*p.speed*p.direction)%1535+1535)%1535;
+      const z=p.sideStreet?p.z:p.plaza?70+((p.z+time*p.speed*p.direction)%900+900)%900:p.crossing?197+Math.sin(p.phase)*5:65+cycle;
+      const x=p.sideStreet?-1600+((p.x+1600+time*p.speed*p.direction)%3200+3200)%3200:p.plaza?p.x+Math.sin(time*.4+p.phase)*2:p.crossing?-112+((p.z+time*p.speed*1.2)%224):p.x+Math.sin(time*.4+p.phase)*.45;
+      return {x,z,p,index,walking,depth:viewSpace(x,0,z)[2]};
+    }).sort((a,b)=>b.depth-a.depth);
+    walkers.forEach(({x,z,p,index,walking})=>drawSilhouette(x,z,{variant:index,phase:p.phase,walking,height:11.3+(index%5)*.4}));
+
+  }
+  function resize() { const rect=canvas.getBoundingClientRect(); w=rect.width;h=rect.height;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);drawCity(); }
+  new ResizeObserver(resize).observe(canvas);
+  try { const saved=localStorage.getItem('kschae-theme'); if(saved==='dark'||saved==='light') setTheme(saved); } catch (_) {}
+  resize();updateNav();syncMotionButton();setZoom(1);setDirection(0);startLoop();
+})();
+
+</script>
+</body>
+</html>
