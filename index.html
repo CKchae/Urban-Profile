@@ -620,6 +620,54 @@
       const roof=[[x,top,z],[x,top,z2],[x2,top,z2],[x2,top,z]];
       strokeLine(side,ink(alpha),.65,true,paper);strokeLine(front,ink(alpha),.75,true,paper);strokeLine(roof,ink(alpha),.55,true,paper);
     }
+    // Fire escapes are modelled in the same 3-D coordinates as the façades.
+    // Narrow landing strips leave a real stair opening between the two end bays.
+    function fireEscape(b,top,alpha){
+      const wall=b.x,sign=-b.side,out=wall+sign*14;
+      const inner=wall+sign*5,flightInner=wall+sign*6,flightOuter=wall+sign*12;
+      const edge=wall+sign*12.5,z0=b.z+Math.min(20,b.depth*.2),z1=Math.min(z0+43,b.z+b.depth-8);
+      const rise=18,rail=5.5,thickness=.65;
+      const modelDepth=Math.max(50,viewSpace(wall,0,(z0+z1)/2)[2]);
+      const detailed=Math.min(w*.92,1000)*zoom/modelDepth>1;
+      const steps=detailed?12:6;
+      const bounds=[project(wall,0,z0),project(out,0,z0),project(wall,0,z1),project(out,0,z1)].filter(Boolean);
+      if(bounds.length&&(bounds.every(v=>v[0]<-60)||bounds.every(v=>v[0]>w+60)))return;
+      const steel=ink(Math.min(.72,alpha*1.45)),fine=ink(Math.min(.5,alpha*.85));
+      function deck(xa,xb,y,za,zb){
+        strokeLine([[xa,y,za],[xb,y,za],[xb,y,zb],[xa,y,zb]],steel,.65,true,paper);
+        strokeLine([[xb,y,za],[xb,y-thickness,za],[xb,y-thickness,zb],[xb,y,zb]],fine,.45,true,paper);
+      }
+      for(let level=0,y=18;y<top-7;level++,y+=rise){
+        // Two end landings, a wall-side walkway, and an outside edge beam.
+        deck(wall,inner,y,z0,z1);
+        deck(inner,out,y,z0,z0+7);
+        deck(inner,out,y,z1-7,z1);
+        deck(edge,out,y,z0+7,z1-7);
+        strokeLine([[out,y+rail,z0],[out,y+rail,z1]],steel,.7);
+        for(const z of [z0,z1]){
+          strokeLine([[wall,y+rail,z],[out,y+rail,z],[out,y,z]],steel,.6);
+          // Diagonal brackets connect the projecting balcony back to its wall.
+          strokeLine([[wall,y-7,z],[out,y-.7,z],[wall,y-.7,z]],fine,.55);
+        }
+        const postStep=detailed?6:14;
+        for(let z=z0;z<=z1+.01;z+=postStep)strokeLine([[out,y,z],[out,y+rail,z]],fine,.45);
+        if(y+rise>=top-7)continue;
+        const start=level%2?z1-7:z0+7,end=level%2?z0+7:z1-7;
+        // Each tread is a horizontal quadrilateral with a visible vertical riser.
+        for(let step=0;step<steps;step++){
+          const t=step/steps,nt=(step+1)/steps;
+          const za=start+(end-start)*t,zb=start+(end-start)*nt;
+          const sy=y+rise*t,ny=y+rise*nt;
+          strokeLine([[flightInner,sy,za],[flightOuter,sy,za],[flightOuter,sy,zb],[flightInner,sy,zb]],steel,detailed?.6:.45,true,paper);
+          if(detailed)strokeLine([[flightInner,sy,zb],[flightOuter,sy,zb],[flightOuter,ny,zb],[flightInner,ny,zb]],fine,.4,true,paper);
+          if(step%(detailed?3:6)===0)for(const x of [flightInner,flightOuter])strokeLine([[x,sy,za],[x,sy+rail,za]],fine,.45);
+        }
+        for(const x of [flightInner,flightOuter]){
+          strokeLine([[x,y-.8,start],[x,y+rise-.8,end]],steel,.85);
+          strokeLine([[x,y+rail,start],[x,y+rise+rail,end]],steel,.7);
+        }
+      }
+    }
     const sortedBlocks=blocks.map(b=>{buildingTransform=b.cross||0;return{b,depth:viewSpace(b.x,0,b.z+b.depth*.5)[2]};}).sort((a,b)=>b.depth-a.depth);
     for(const {b:original,depth} of sortedBlocks){
       const b={...original,height:original.height*era.height,setback:eraIndex>0&&original.setback};
@@ -644,13 +692,7 @@
         for(let x=left+inset+10;x<right-inset-3;x+=15)strokeLine([[x,baseHeight+8,b.z+12],[x,b.height-6,b.z+12]],ink(alpha*.45),.4);
         box(left+inset+10,b.z+22,b.width-inset*2-20,b.depth-44,b.height,b.height+18,alpha*.85);
       }
-      if(b.escape){
-        const sx=b.x-b.side*2,z1=b.z+30,z2=b.z+59;
-        for(let y=30;y<baseHeight-18;y+=30){
-          strokeLine([[sx,y,z1],[sx,y,z2],[sx,y+6,z2],[sx,y+6,z1]],ink(alpha*.85),.65);
-          strokeLine([[sx,y,z1],[sx,y+30,z2]],ink(alpha*.8),.65);
-        }
-      }
+      if(b.escape)fireEscape(b,baseHeight,alpha);
       if(b.water){
         const x=(left+right)/2,z=b.z+b.depth*.55,y=baseHeight+14,r=12;
         for(const sign of [-1,1])strokeLine([[x+sign*9,baseHeight,z],[x+sign*9,y+5,z]],ink(alpha),.7);
@@ -755,6 +797,7 @@
   try { const saved=localStorage.getItem('kschae-theme'); if(saved==='dark'||saved==='light') setTheme(saved); } catch (_) {}
   resize();updateNav();syncMotionButton();setZoom(1);setDirection(0);selectEra(0);startLoop();
 })();
+
 
 
 
