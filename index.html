@@ -90,7 +90,7 @@
 
   <main>
     <section id="home" class="hero" aria-labelledby="name">
-      <div class="city" role="img" aria-label="브로드웨이와 타임스퀘어 보행광장을 모티브로 한 무채색 선화. 간판이 있는 건물 사이의 넓은 광장에 의자, 테이블, 계단형 좌석과 옷과 가방, 팔과 다리 윤곽을 갖춘 실루엣 인물들이 걷거나 앉아 있습니다. 실제 지형을 정확히 재현한 지도는 아닙니다."><canvas id="city" aria-hidden="true"></canvas></div>
+      <div class="city" role="img" aria-label="브로드웨이와 타임스퀘어 보행광장을 모티브로 한 무채색 선화. 간판이 있는 건물 사이의 넓은 광장에서 대부분의 사람은 걷고, 최대 두 사람만 달립니다. 앉아 있는 사람들은 커피와 먹거리를 즐깁니다. 실제 지형을 정확히 재현한 지도는 아닙니다."><canvas id="city" aria-hidden="true"></canvas></div>
       <div class="drawing-label"><span class="live-dot"></span> NEW YORK / BROADWAY · TIMES SQUARE</div>
       <div class="view-controls" role="group" aria-label="도시 배경 확대 및 축소">
         <div class="view-heading"><label for="view-distance">시점 거리</label><output id="zoom-value" for="view-distance">1.00×</output></div>
@@ -384,6 +384,31 @@
   const people=Array.from({length:54},(_,i)=>({x:(i%2?-1:1)*(92+random()*24),z:65+random()*1535,speed:10+random()*15,direction:random()>.5?1:-1,phase:random()*Math.PI*2,crossing:i%7===0}));
   for(let i=0;i<32;i++)people.push({plaza:true,x:(random()-.5)*165,z:70+random()*900,speed:8+random()*12,direction:i%2?1:-1,phase:random()*Math.PI*2});
   for(let i=0;i<30;i++)people.push({sideStreet:true,x:random()*3200-1600,z:520+(i%2?1:-1)*(66+random()*10),speed:12+random()*12,direction:i%2?1:-1,phase:random()*Math.PI*2});
+  // Human scale: a roughly 1.7 m person occupies about 12 scene units.
+  const PEDESTRIAN_UNITS_PER_METRE=7;
+  const RUNNER_INDICES=new Set([4,29]);
+  people.forEach((p,index)=>{
+    p.running=RUNNER_INDICES.has(index);
+    p.speedMps=p.running?2.45+(index%3)*.12:1.02+(index%7)*.055;
+    p.speed=p.speedMps*PEDESTRIAN_UNITS_PER_METRE;
+  });
+  function pedestrianPose(p,index,time){
+    const walking=!(p.plaza&&index%5===0),t=walking?time:0;
+    const cycle=((p.z-65+t*p.speed*p.direction)%1535+1535)%1535;
+    const z=p.sideStreet?p.z:p.plaza?70+((p.z+t*p.speed*p.direction)%900+900)%900:p.crossing?197+Math.sin(p.phase)*5:65+cycle;
+    const x=p.sideStreet?-1600+((p.x+1600+t*p.speed*p.direction)%3200+3200)%3200:p.plaza?p.x+Math.sin(t*.4+p.phase)*.45:p.crossing?-112+((p.z+t*p.speed)%224):p.x+Math.sin(t*.4+p.phase)*.2;
+    return {x,z,walking,running:walking&&p.running,speedMps:p.speedMps};
+  }
+  function gaitPhase(time,speedMps,running,phase){
+    const strideMetres=running?1.9:1.35;
+    return time*speedMps/strideMetres*Math.PI*2+phase;
+  }
+  function coffeePose(time,phase){
+    const cycle=((time+phase*2.4)%16+16)%16;
+    const ease=t=>t*t*(3-2*t);
+    const lift=cycle<2?ease(cycle/2):cycle<4?1:cycle<6?1-ease((cycle-4)/2):0;
+    return {lift,hand:[31-21*lift,48+27*lift],elbow:[17+4*lift,48+12*lift]};
+  }
   function viewSpace(x,y,z) {
     if (buildingTransform) { const localX=x; x=buildingTransform*z; z=520+localX; }
     const angle=direction*Math.PI/180;
@@ -412,7 +437,7 @@
   }
   // Original articulated silhouettes: clothing, hair, shoes and accessories.
   // Each shape stays vector-based so it remains crisp when the scene is zoomed.
-  function drawSilhouette(x,z,{variant=0,phase=0,walking=true,seated=false,height=12}={}){
+  function drawSilhouette(x,z,{variant=0,phase=0,walking=true,running=false,speedMps=1.2,seated=false,height=12}={}){
     const depth=viewSpace(x,0,z)[2];
     if(depth<50)return;
     const foot=project(x,0,z);
@@ -422,14 +447,14 @@
     const dark=root.dataset.theme==='dark';
     const alpha=Math.max(.48,Math.min(.9,.92-depth/4200));
     const pigment=dark?`rgba(226,226,226,${alpha})`:`rgba(28,28,28,${alpha})`;
-    const stride=walking?Math.sin(elapsed*4.6+phase):.1;
-    const bob=walking?Math.abs(stride)*.8:0;
-    const mirror=variant%2===0?1:-1;
-    const point=([px,py])=>[foot[0]+px*unit*mirror,foot[1]-(py+bob)*unit];
-    function shape(points){
-      ctx.beginPath();points.forEach((p,i)=>{const q=point(p);i?ctx.lineTo(...q):ctx.moveTo(...q);});ctx.closePath();ctx.fillStyle=pigment;ctx.fill();
+    const stride=walking?Math.sin(gaitPhase(elapsed,speedMps,running,phase)):.1;
+    const bob=walking?Math.abs(stride)*(running?2.1:.45):0;
+    const mirror=seated?1:variant%2===0?1:-1;
+    const point=([px,py])=>[foot[0]+(px+(running?4:0)*py/100)*unit*mirror,foot[1]-(py+bob)*unit];
+    function shape(points,fill=pigment){
+      ctx.beginPath();points.forEach((p,i)=>{const q=point(p);i?ctx.lineTo(...q):ctx.moveTo(...q);});ctx.closePath();ctx.fillStyle=fill;ctx.fill();
     }
-    function round(p,r){const q=point(p);ctx.beginPath();ctx.arc(q[0],q[1],Math.max(.15,r*unit),0,Math.PI*2);ctx.fillStyle=pigment;ctx.fill();}
+    function round(p,r,fill=pigment){const q=point(p);ctx.beginPath();ctx.arc(q[0],q[1],Math.max(.15,r*unit),0,Math.PI*2);ctx.fillStyle=fill;ctx.fill();}
     function limb(a,b,wa,wb){
       const dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy)||1,nx=-dy/length,ny=dx/length;
       shape([[a[0]+nx*wa,a[1]+ny*wa],[b[0]+nx*wb,b[1]+ny*wb],[b[0]-nx*wb,b[1]-ny*wb],[a[0]-nx*wa,a[1]-ny*wa]]);
@@ -441,19 +466,26 @@
       limb([2,32],[14,25],4.8,3.9);limb([14,25],[15,3],3.9,2.5);
       shape([[12,5],[20,5],[25,1],[25,0],[12,0]]);shape([[18,5],[26,5],[31,1],[31,0],[18,0]]);
       shape([[-10,32],[-10,54],[-6,65],[1,69],[10,65],[13,55],[10,34],[3,29],[-5,29]]);
-      limb([9,61],[17,48],4.2,3);limb([17,48],[31,48],3,2);round([31,48],2);
+      const cafe=coffeePose(elapsed,phase);
+      limb([9,61],cafe.elbow,4.2,3);round(cafe.elbow,3);limb(cafe.elbow,cafe.hand,3,2);round(cafe.hand,2);
+      // The second arm rests beside the tabletop while the cup rises to the mouth.
+      limb([1,60],[11,44],3.5,2.5);limb([11,44],[25,46],2.5,1.8);
+      const [cupX,cupY]=cafe.hand,paper=root.dataset.theme==='dark'?'#151515':'#f7f7f7';
+      shape([[cupX-7,cupY+8],[cupX+1,cupY+8],[cupX,cupY],[cupX-6,cupY]]);
+      round([cupX+2,cupY+4],2.7);round([cupX+2,cupY+4],1.35,paper);
+      shape([[cupX-6,cupY+7],[cupX,cupY+7],[cupX,cupY+6],[cupX-6,cupY+6]],paper);
       shape([[-1,65],[-1,74],[5,74],[7,67]]);
       round([2,80],5.8);shape([[-3,86],[3,87],[7,84],[8,79],[10,77],[7,76],[6,72],[1,71],[-3,75],[-4,81]]);
       return;
     }
     // The far arm sits behind the coat and the legs have tapered trouser contours.
-    const farElbow=[-13+stride*4,60],farHand=[-13-stride*5,47];
+    const farElbow=running?[-14+stride*7,58]:[-13+stride*4,60],farHand=running?[-5+stride*12,69]:[-13-stride*5,47];
     limb([-10,76],farElbow,4.3,3.2);limb(farElbow,farHand,3.2,2.1);round(farHand,2.2);
-    const leftKnee=[-4+stride*7,24],leftAnkle=[-5+stride*13,4];
-    const rightKnee=[5-stride*6,23],rightAnkle=[5-stride*12,4];
+    const leftKnee=[-4+stride*(running?12:7),24],leftAnkle=[-5+stride*(running?24:18),4+Math.max(0,-stride)*(running?15:2)];
+    const rightKnee=[5-stride*(running?11:6),23],rightAnkle=[5-stride*(running?23:17),4+Math.max(0,stride)*(running?15:2)];
     limb([-5,46],leftKnee,5.3,3.9);round(leftKnee,3.9);limb(leftKnee,leftAnkle,3.9,2.5);
     limb([5,46],rightKnee,5.1,3.7);round(rightKnee,3.7);limb(rightKnee,rightAnkle,3.7,2.4);
-    for(const a of [leftAnkle,rightAnkle])shape([[a[0]-3,a[1]+2],[a[0]+3,a[1]+2],[a[0]+7,1],[a[0]+7,0],[a[0]-3,0]]);
+    for(const a of [leftAnkle,rightAnkle])shape([[a[0]-3,a[1]+2],[a[0]+3,a[1]+2],[a[0]+7,a[1]-3],[a[0]+7,a[1]-4],[a[0]-3,a[1]-4]]);
     // Long coat, skirt and short jacket profiles vary across the crowd.
     if(style===3){shape([[-5,84],[5,84],[11,78],[10,64],[8,60],[14,39],[-13,39],[-8,60],[-10,75]]);}
     else if(style===0||style===4){shape([[-5,84],[5,84],[12,78],[11,62],[12,47],[2,45],[-1,49],[-3,45],[-13,47],[-11,63],[-12,77]]);}
@@ -465,7 +497,7 @@
     }else if(style===2&&!walking){
       limb([11,75],[21,61],4.2,3);limb([21,61],[10,54],3,2.3);round([10,54],2.3);
     }else{
-      const elbow=[14-stride*4,60],hand=[12+stride*5,47];
+      const elbow=running?[14-stride*7,58]:[14-stride*4,60],hand=running?[4-stride*12,68]:[12+stride*5,47];
       limb([10,76],elbow,4.4,3.1);round(elbow,3.1);limb(elbow,hand,3.1,2.1);round(hand,2.2);
     }
     if(style===1){
@@ -738,16 +770,30 @@
     // Tables, movable chairs and planters make staying as visible as walking.
     const seats=[[-64,130],[55,170],[-35,245],[70,320],[-64,410],[32,470],[-30,570],[65,640]];
     if(eraIndex>=3)for(const [x,z] of seats){
-      strokeLine(Array.from({length:17},(_,j)=>[x+Math.cos(j*Math.PI/8)*7,5,z+Math.sin(j*Math.PI/8)*7]),ink(.5),.7,true);
+      strokeLine(Array.from({length:17},(_,j)=>[x+Math.cos(j*Math.PI/8)*5.5,5,z+Math.sin(j*Math.PI/8)*5.5]),ink(.5),.7,true);
       strokeLine([[x,0,z],[x,5,z]],ink(.4),.7);
       for(const side of [-1,1]){
-        const cx=x+side*12;
+        const cx=x+side*9;
         strokeLine([[cx-3,0,z-3],[cx-3,3,z-3],[cx+3,3,z-3],[cx+3,0,z-3]],ink(.45),.65);
         strokeLine([[cx-3,3,z-3],[cx-3,7,z-3],[cx+3,7,z-3],[cx+3,3,z-3],[cx+3,3,z+3],[cx-3,3,z+3],[cx-3,3,z-3]],ink(.4),.65);
       }
     }
+    // Coffee cups, saucers and a small pastry plate on each occupied table.
+    function cafeProps(x,z,index){
+      const circle=(cx,cy,cz,rx,rz)=>Array.from({length:17},(_,j)=>[cx+Math.cos(j*Math.PI/8)*rx,cy,cz+Math.sin(j*Math.PI/8)*rz]);
+      const cx=x+1.8,cz=z+.8;
+      strokeLine(circle(cx,5.15,cz,1.6,1.1),ink(.45),.6,true,paper);
+      strokeLine([[cx-.7,5.25,cz-.5],[cx+.7,5.25,cz-.5],[cx+.9,6.8,cz-.5],[cx-.9,6.8,cz-.5]],ink(.7),.6,true,paper);
+      strokeLine(circle(cx,6.8,cz-.5,.9,.55),ink(.7),.5,true,paper);
+      strokeLine([[cx+.85,6.6,cz-.5],[cx+1.5,6.5,cz-.5],[cx+1.6,5.8,cz-.5],[cx+.75,5.7,cz-.5]],ink(.65),.6);
+      const drift=Math.sin(elapsed*.65+index)*.22;
+      strokeLine([[cx-.3,7.1,cz-.5],[cx+drift,7.8,cz-.5],[cx-.2,8.5,cz-.5]],ink(.24),.45);
+      strokeLine(circle(x-1.5,5.12,z-1.5,1.7,1.15),ink(.35),.5,true,paper);
+      strokeLine([[x-2.7,5.3,z-1.7],[x-2.2,6,z-1.2],[x-1.2,6.2,z-1.2],[x-.3,5.5,z-1.5],[x-1.5,5.4,z-2]],ink(.5),.55,true,ink(.23));
+    }
+    if(eraIndex>=3)seats.forEach(([x,z],i)=>cafeProps(x,z,i));
     // Filled seated silhouettes with jackets and bent knees.
-    if(eraIndex>=3)seats.forEach(([x,z],i)=>drawSilhouette(x-12,z,{variant:i,seated:true,height:10.6}));
+    if(eraIndex>=3)seats.forEach(([x,z],i)=>drawSilhouette(x-9,z,{variant:i,phase:i*.93,seated:true,height:10.6}));
     if(eraIndex>=3)for(const x of [-110,110])for(const z of [150,350,570]){
       box(x-6,z,12,12,0,7,.3);
       for(let j=0;j<5;j++)strokeLine([[x,7,z+6],[x-5+j*2,17+Math.sin(j)*3,z+6]],ink(.36),.6);
@@ -764,18 +810,14 @@
     const sign=project(-87,49,250);if(sign){ctx.fillStyle=ink(.65);ctx.font='7px monospace';ctx.fillText('BROADWAY',...sign);}
     // Paint far-to-near so nearby silhouettes read as complete figures.
     const walkers=people.map((p,index)=>{
-      const walking=!(p.plaza&&index%5===0);
-      const time=walking?elapsed:0;
-      const cycle=((p.z-65+time*p.speed*p.direction)%1535+1535)%1535;
-      const z=p.sideStreet?p.z:p.plaza?70+((p.z+time*p.speed*p.direction)%900+900)%900:p.crossing?197+Math.sin(p.phase)*5:65+cycle;
-      const x=p.sideStreet?-1600+((p.x+1600+time*p.speed*p.direction)%3200+3200)%3200:p.plaza?p.x+Math.sin(time*.4+p.phase)*2:p.crossing?-112+((p.z+time*p.speed*1.2)%224):p.x+Math.sin(time*.4+p.phase)*.45;
-      return {x,z,p,index,walking,depth:viewSpace(x,0,z)[2]};
+      const pose=pedestrianPose(p,index,elapsed);
+      return {...pose,p,index,depth:viewSpace(pose.x,0,pose.z)[2]};
     }).sort((a,b)=>b.depth-a.depth);
-    walkers.forEach(({x,z,p,index,walking})=>{
+    walkers.forEach(({x,z,p,index,walking,running,speedMps})=>{
       if(eraIndex<3&&p.plaza)return;
       if(eraIndex<3&&p.crossing&&!p.sideStreet)return;
       if(eraIndex===0&&index%2)return;
-      drawSilhouette(x,z,{variant:eraIndex<2?index%2*3:index,phase:p.phase,walking,height:11.3+(index%5)*.4});
+      drawSilhouette(x,z,{variant:running?2:eraIndex<2?index%2*3:index,phase:p.phase,walking,running,speedMps,height:11.3+(index%5)*.4});
     });
     // Period transport is illustrative, with safe, deterministic moving positions.
     if(eraIndex<3){
@@ -797,6 +839,7 @@
   try { const saved=localStorage.getItem('kschae-theme'); if(saved==='dark'||saved==='light') setTheme(saved); } catch (_) {}
   resize();updateNav();syncMotionButton();setZoom(1);setDirection(0);selectEra(0);startLoop();
 })();
+
 
 
 
